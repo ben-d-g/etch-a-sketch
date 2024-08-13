@@ -1,7 +1,7 @@
 function makeGrid(sizeLength){
     let etchASketch = document.querySelector("#etchASketch");
 
-    for (let row = 0; row < sizeLength; row++){
+        for (let row = 0; row < sizeLength; row++){
         let rowDiv = document.createElement("div");
         rowDiv.setAttribute("class", "row");
 
@@ -13,8 +13,12 @@ function makeGrid(sizeLength){
             cellDiv.setAttribute("class", "cell");
             rowDiv.appendChild(cellDiv);
 
-            cellDiv.style.width = "50px";
-            cellDiv.style.height = "50px";
+            const cellSideLength = Math.floor(1000/sizeLength).toString();
+
+            console.log(cellSideLength)
+
+            cellDiv.style.width = cellSideLength + "px";
+            cellDiv.style.height = cellSideLength + "px";
 
             cellDiv.addEventListener("mouseover", () => {
                 cellDiv.style.backgroundColor = "black";
