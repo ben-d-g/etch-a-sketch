@@ -13,7 +13,11 @@ for (let row = 0; row < 16; row++){
         rowDiv.appendChild(cellDiv);
 
         cellDiv.style.width = "50px";
-        cellDiv.style.height = "50px";        
+        cellDiv.style.height = "50px";
+
+        cellDiv.addEventListener("mouseover", () => {
+            cellDiv.style.backgroundColor = "black";
+        })
     }
 
     etchASketch.appendChild(rowDiv);
