@@ -1,29 +1,35 @@
 function makeGrid(sizeLength){
     let etchASketch = document.querySelector("#etchASketch");
 
-        for (let row = 0; row < sizeLength; row++){
-        let rowDiv = document.createElement("div");
-        rowDiv.setAttribute("class", "row");
+    const cellSideLength = Math.floor(1000/sizeLength);
+    const gridSideLength = cellSideLength * sizeLength;
 
-        rowDiv.style.display = "flex";
-        rowDiv.style.flexDirection = "row";
+    etchASketch.style.width = gridSideLength.toString() + "px";
+    etchASketch.style.height = gridSideLength.toString() + "px";
 
-        for (let col = 0; col < sizeLength; col++){
-            let cellDiv = document.createElement("div");
-            cellDiv.setAttribute("class", "cell");
-            rowDiv.appendChild(cellDiv);
+    for (let row = 0; row < sizeLength; row++){
+    let rowDiv = document.createElement("div");
+    rowDiv.setAttribute("class", "row");
 
-            const cellSideLength = Math.floor(1000/sizeLength).toString();
+    rowDiv.style.display = "flex";
+    rowDiv.style.flexDirection = "row";
 
-            console.log(cellSideLength)
+    for (let col = 0; col < sizeLength; col++){
+        let cellDiv = document.createElement("div");
+        cellDiv.setAttribute("class", "cell");
+        rowDiv.appendChild(cellDiv);
 
-            cellDiv.style.width = cellSideLength + "px";
-            cellDiv.style.height = cellSideLength + "px";
+        const cellSideLengthStr = cellSideLength.toString();
 
-            cellDiv.addEventListener("mouseover", () => {
-                cellDiv.style.backgroundColor = "black";
-            })
-        }
+        console.log(cellSideLength)
+
+        cellDiv.style.width = cellSideLength + "px";
+        cellDiv.style.height = cellSideLength + "px";
+
+        cellDiv.addEventListener("mouseover", () => {
+            cellDiv.style.backgroundColor = "black";
+        })
+    }
 
         etchASketch.appendChild(rowDiv);
     }
