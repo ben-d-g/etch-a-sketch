@@ -19,19 +19,33 @@ function makeGrid(sizeLength){
         cellDiv.setAttribute("class", "cell");
         rowDiv.appendChild(cellDiv);
 
-        const cellSideLengthStr = cellSideLength.toString();
-
-        console.log(cellSideLength)
-
         cellDiv.style.width = cellSideLength + "px";
         cellDiv.style.height = cellSideLength + "px";
 
-        cellDiv.addEventListener("mouseover", () => {
-            const rVal = Math.round(255 * (Math.random())).toString();
-            const gVal = Math.round(255 * (Math.random())).toString();
-            const bVal = Math.round(255 * (Math.random())).toString();
-            cellDiv.style.backgroundColor = "rgb(" + rVal + "," + gVal + "," + bVal +")";
 
+        cellDiv.style.backgroundColor = "rgba(0,0,0,0)";
+
+        let numOfHovers = 0;
+
+        //change this to make colours random/not random
+        const randomColours = true;
+
+        cellDiv.addEventListener("mouseover", () => {
+            if (randomColours){
+                //use rgba for colour, a value represents darkness (0 - 1)
+                const rVal = Math.round(255 * (Math.random())).toString();
+                const gVal = Math.round(255 * (Math.random())).toString();
+                const bVal = Math.round(255 * (Math.random())).toString();
+                const aVal = (Math.round(numOfHovers)/10).toString();
+
+                cellDiv.style.backgroundColor = "rgba(" + rVal + "," + gVal + "," + bVal + "," + aVal +")";
+                numOfHovers = Math.min(numOfHovers + 1, 10);
+                console.log(numOfHovers);
+            }
+            else{
+                cellDiv.style.backgroundColor = "black";
+            }
+                
         })
     }
 
@@ -39,6 +53,7 @@ function makeGrid(sizeLength){
     }
 }
 
+// delete everything and start again
 const newGridButton = document.querySelector("#newGrid");
 newGridButton.addEventListener("click", () => {
     while (etchASketch.firstChild){

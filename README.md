@@ -7,3 +7,5 @@ This will be a display of the Javascript (especially DOM manipulation) and CSS s
 ## Additional
 
 Now when the number of cells in the grid changes their size changes too, so as to fit in a 1000px x 1000px (ish) square.
+
+Also, colour randomisation has been added, although this can be removed by editing line 28 of etchASketch.js.
