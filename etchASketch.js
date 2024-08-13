@@ -1,24 +1,36 @@
-let etchASketch = document.querySelector("#etchASketch");
+function makeGrid(sizeLength){
+    let etchASketch = document.querySelector("#etchASketch");
 
-for (let row = 0; row < 16; row++){
-    let rowDiv = document.createElement("div");
-    rowDiv.setAttribute("class", "row");
+    for (let row = 0; row < sizeLength; row++){
+        let rowDiv = document.createElement("div");
+        rowDiv.setAttribute("class", "row");
 
-    rowDiv.style.display = "flex";
-    rowDiv.style.flexDirection = "row";
+        rowDiv.style.display = "flex";
+        rowDiv.style.flexDirection = "row";
 
-    for (let col = 0; col < 16; col++){
-        let cellDiv = document.createElement("div");
-        cellDiv.setAttribute("class", "cell");
-        rowDiv.appendChild(cellDiv);
+        for (let col = 0; col < sizeLength; col++){
+            let cellDiv = document.createElement("div");
+            cellDiv.setAttribute("class", "cell");
+            rowDiv.appendChild(cellDiv);
 
-        cellDiv.style.width = "50px";
-        cellDiv.style.height = "50px";
+            cellDiv.style.width = "50px";
+            cellDiv.style.height = "50px";
 
-        cellDiv.addEventListener("mouseover", () => {
-            cellDiv.style.backgroundColor = "black";
-        })
+            cellDiv.addEventListener("mouseover", () => {
+                cellDiv.style.backgroundColor = "black";
+            })
+        }
+
+        etchASketch.appendChild(rowDiv);
+    }
+}
+
+const newGridButton = document.querySelector("#newGrid");
+newGridButton.addEventListener("click", () => {
+    while (etchASketch.firstChild){
+        etchASketch.firstChild.remove();
     }
 
-    etchASketch.appendChild(rowDiv);
-}
+    const gridSize = prompt("How many squares should each side of your grid have?");
+    makeGrid(gridSize);
+})
