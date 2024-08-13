@@ -27,7 +27,11 @@ function makeGrid(sizeLength){
         cellDiv.style.height = cellSideLength + "px";
 
         cellDiv.addEventListener("mouseover", () => {
-            cellDiv.style.backgroundColor = "black";
+            const rVal = Math.round(255 * (Math.random())).toString();
+            const gVal = Math.round(255 * (Math.random())).toString();
+            const bVal = Math.round(255 * (Math.random())).toString();
+            cellDiv.style.backgroundColor = "rgb(" + rVal + "," + gVal + "," + bVal +")";
+
         })
     }
 
